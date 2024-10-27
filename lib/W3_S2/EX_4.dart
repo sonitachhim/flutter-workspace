@@ -4,56 +4,70 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(
     MaterialApp(
-      home: Container(
-          padding: const EdgeInsets.all(40),
-          margin: const EdgeInsets.all(10),
-          child: Column(
+      home: Scaffold(
+          body: box()
+          ,)
+          ,)
+          );
+}
+          class box extends StatelessWidget {
+  const box({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(40),
+      margin: const EdgeInsets.all(10),
+      child: Column(
             children: [
-              Container(
-                padding: const EdgeInsets.all(40),
-                margin: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 181, 223, 255),
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: const Center(
-                  child: Text(
-                    "OOP",
-                    style: TextStyle(fontSize: 30, color: Colors.white),
-                  ),
-                ),
+              CustomContainer(
+                color: Color.fromARGB(255, 111, 205, 255),
+                text: "OOP",
               ),
-              Container(
-                padding: const EdgeInsets.all(40),
-                margin: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 111, 205, 255),
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: const Center(
-                  child: Text(
-                    "DART",
-                    style: TextStyle(fontSize: 30, color: Colors.white),
-                  ),
-                ),
+              CustomContainer(
+                color: Color.fromARGB(255, 111, 205, 255),
+                text: "DART",
               ),
-              Container(
-                padding: const EdgeInsets.all(40),
-                margin: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(colors: [Color.fromARGB(255, 44, 159, 241),Color.fromARGB(255, 11, 76, 240)]),
-                  
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: const Center(
-                  child: Text(
-                    "FLUTTER",
-                    style: TextStyle(fontSize: 30, color: Colors.white),
-                  ),
-                ),
+              CustomContainer(
+                gradient: const LinearGradient(colors: [
+                    Color.fromARGB(255, 44, 159, 241),
+                    Color.fromARGB(255, 11, 76, 240)
+                  ],),
+                text: "FLUTTER",
               ),
             ],
-          )),
     ),
-  );
+    );
+  }
+          }        
+              
+
+
+
+class CustomContainer extends StatelessWidget {
+  final Color? color;
+  final String text;
+  final Gradient? gradient;
+  
+  const CustomContainer({
+    super.key, this.color, required this.text, this.gradient,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(40),
+      margin: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: color,
+        gradient: gradient,
+        borderRadius: BorderRadius.circular(50),
+      ),
+      child: Center(
+        child: Text(
+          text,
+          style: TextStyle(fontSize: 30, color: Colors.white),
+        ),
+      ),
+    );
+  }
 }
