@@ -69,6 +69,9 @@ flutter:
     - assets/dice-2/dice-4.png
     - assets/dice-2/dice-5.png
     - assets/dice-2/dice-6.png
+    - assets/skill/dart.png
+    - assets/skill/firebase.png
+    - assets/skill/flutter.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

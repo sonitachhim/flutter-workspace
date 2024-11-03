@@ -1,48 +1,34 @@
 import 'package:flutter/material.dart';
 
-class HobbyCard extends StatelessWidget {
-  const HobbyCard(this.title, this.icon, this.backgroundColor, {super.key});
-
-  final String title;
-  final IconData icon;
-  final Color backgroundColor;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      margin: const EdgeInsets.all(40),
-      padding: const EdgeInsets.all(40),
-      child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Icon(icon, color: Colors.white, size: 40),
-            const SizedBox(
-              width: 20,
-            ),
-            Text(
-              title,
-              style: const TextStyle(color: Colors.white),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+const String dart = 'assets/skill/dart.png';
+const String firebase = 'assets/skill/firebase.png';
+const String flutter = 'assets/skill/flutter.png';
 
 void main() {
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     home: Scaffold(
-      body: Center(
-        child: Column(
+      body: Container(
+        //padding: const EdgeInsets.all(30),
+        child: Center(
+          child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            HobbyCard('hiking', Icons.hiking, Colors.blue),
-            HobbyCard('reading', Icons.book, Colors.green),
+            Card(
+              child: Column(
+                children: [
+                  Image.asset(dart),
+                  Text(
+                    'Dart',
+                    style: TextStyle(fontSize: 15),
+                  ),
+                  Text('the best object language',
+                  style: TextStyle(fontSize: 12),)
+                ],
+                
+              ),
+            )
           ],
+        ),
         ),
       ),
     ),
