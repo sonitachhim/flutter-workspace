@@ -5,10 +5,10 @@ void main() {
       home: Container(
           padding: const EdgeInsets.all(40),
           margin: const EdgeInsets.all(20),
-          color: Color(0xff4F7EF7),
+          color: const Color(0xff4F7EF7),
           child: Container(
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),
-            color: Color(0xff1142BF),),
+            color: const Color(0xff1142BF),),
             child: const Center(
               child: Text("CADT STUDENTS",
               style: TextStyle(fontSize: 30, color: Colors.white),),

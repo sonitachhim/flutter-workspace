@@ -12,7 +12,7 @@ void main() {
                 padding: const EdgeInsets.all(40),
                 margin: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 181, 223, 255),
+                  color: const Color.fromARGB(255, 181, 223, 255),
                   borderRadius: BorderRadius.circular(50),
                 ),
                 child: const Center(
@@ -26,7 +26,7 @@ void main() {
                 padding: const EdgeInsets.all(40),
                 margin: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 111, 205, 255),
+                  color: const Color.fromARGB(255, 111, 205, 255),
                   borderRadius: BorderRadius.circular(50),
                 ),
                 child: const Center(
