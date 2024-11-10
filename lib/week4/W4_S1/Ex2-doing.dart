@@ -1,21 +1,36 @@
 import 'package:flutter/material.dart';
 
-
+const String dart = 'assets/skill/dart.png';
+const String firebase = 'assets/skill/firebase.png';
+const String flutter = 'assets/skill/flutter.png';
 
 void main() {
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     home: Scaffold(
-      body: Padding(
-        padding: EdgeInsets.all(30),
-        child: Column(
+      body: Container(
+        //padding: const EdgeInsets.all(30),
+        child: Center(
+          child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Card(
               child: Column(
+                children: [
+                  Image.asset(dart),
+                  Text(
+                    'Dart',
+                    style: TextStyle(fontSize: 15),
+                  ),
+                  Text('the best object language',
+                  style: TextStyle(fontSize: 12),)
+                ],
                 
               ),
             )
           ],
-        ),),
+        ),
+        ),
+      ),
     ),
   ));
 }

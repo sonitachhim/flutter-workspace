@@ -1,36 +1,50 @@
 import 'package:flutter/material.dart';
 
-const String dart = 'assets/skill/dart.png';
-const String firebase = 'assets/skill/firebase.png';
-const String flutter = 'assets/skill/flutter.png';
-
-void main() {
-  runApp(MaterialApp(
-    home: Scaffold(
-      body: Container(
-        //padding: const EdgeInsets.all(30),
-        child: Center(
-          child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+void main() => runApp(MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          title: const Text("Favorite cards"),
+        ),
+        body: Column(
           children: [
-            Card(
-              child: Column(
+            Container(
+              decoration: BoxDecoration(
+                border: Border(bottom: BorderSide(width: 1, color: Colors.grey)),
+              ),
+              padding: EdgeInsets.all(20),
+              // YOUR CODE
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Image.asset(dart),
-                  Text(
-                    'Dart',
-                    style: TextStyle(fontSize: 15),
+                  const Expanded(
+                    flex: 6,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'title',
+                          style: TextStyle(color: Colors.blue, fontSize: 16),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text('description'),
+                      ],
+                    ),
                   ),
-                  Text('the best object language',
-                  style: TextStyle(fontSize: 12),)
+                  IconButton(
+                    onPressed: () => {},
+                    icon: const Icon(
+                      Icons.favorite,
+                      color: Colors.red,
+                    ),
+                  ),
                 ],
-                
               ),
             )
           ],
         ),
-        ),
       ),
-    ),
-  ));
-}
+    ));

@@ -13,8 +13,8 @@ class HobbyCard extends StatelessWidget {
         color: backgroundColor,
         borderRadius: BorderRadius.circular(20),
       ),
-      margin: const EdgeInsets.all(40),
-      padding: const EdgeInsets.all(40),
+      // margin: const EdgeInsets.all(40),
+      padding: const EdgeInsets.all(20),
       child: Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -38,11 +38,17 @@ void main() {
   runApp(const MaterialApp(
     home: Scaffold(
       body: Center(
-        child: Column(
-          children: [
-            HobbyCard('hiking', Icons.hiking, Colors.blue),
-            HobbyCard('reading', Icons.book, Colors.green),
-          ],
+        child: Padding(
+          padding: EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              HobbyCard('hiking', Icons.hiking, Colors.blue),
+              SizedBox(
+                height: 10,
+              ),
+              HobbyCard('reading', Icons.book, Colors.green),
+            ],
+          ),
         ),
       ),
     ),
