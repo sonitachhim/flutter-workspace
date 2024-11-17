@@ -17,11 +17,11 @@ void main() {
               child: Column(
                 children: [
                   Image.asset(dart),
-                  Text(
+                  const Text(
                     'Dart',
                     style: TextStyle(fontSize: 15),
                   ),
-                  Text('the best object language',
+                  const Text('the best object language',
                   style: TextStyle(fontSize: 12),)
                 ],
                 

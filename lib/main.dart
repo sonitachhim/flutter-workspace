@@ -1,84 +1,54 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: const Text("Favorite cards"),
-        ),
-        body: const CardList(),
-      ),
-    ));
+List<String> colors = ["red", "blue", "green"];
 
-class CardList extends StatelessWidget {
-  const CardList({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        CardContainer(),
-        CardContainer(),
-        CardContainer(),
-      ],
-    );
-  }
+List<Widget> getLabels() {
+  return colors.map((colors) => Label(colors)).toList();
 }
 
-class CardContainer extends StatefulWidget {
-  const CardContainer({
-    super.key,
-  });
-
-  @override
-  State<CardContainer> createState() => _CardContainerState();
-}
-
-class _CardContainerState extends State<CardContainer> {
-  bool onPressed = true;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        border: Border(bottom: BorderSide(width: 1, color: Colors.grey)),
-      ),
-      padding: EdgeInsets.all(20),
-      // YOUR CODE
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          const Expanded(
-            flex: 6,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+void main() {
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: ListView(
+          children: [
+            Label("Method 1: Loop in Array", bold: true),
+            Column(
               children: [
-                Text(
-                  'title',
-                  style: TextStyle(color: Colors.blue, fontSize: 16),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text('description'),
+                for (var color in colors) Label(color),
               ],
             ),
-          ),
-          IconButton(
-            icon: Icon(
-              Icons.favorite,
-              color: onPressed ? Colors.red: Colors.grey,
+            Label("Method 2: Map", bold: true),
+            Column(
+              children: [
+                ...colors.map((color) => Label(color)).toList(),
+              ],
             ),
-            onPressed: () {
-              setState(() {
-                onPressed = !onPressed;
-              });
-            },
-          ),
-        ],
+            Label("Method 23: Dedicated Function", bold: true),
+            Column(
+              children: getLabels(),
+            )
+          ],
+        ),
       ),
+    ),
+  ));
+}
+
+class Label extends StatelessWidget {
+  const Label(this.text, {super.key, this.bold = false});
+
+  final bool bold;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style:
+          TextStyle(fontWeight: (bold ? FontWeight.bold : FontWeight.normal)),
     );
   }
 }

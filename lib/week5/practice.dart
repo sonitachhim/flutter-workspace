@@ -8,7 +8,7 @@ void main() {
           children: [
             Container(
               height: 100,
-              color: Color.fromARGB(255, 156, 156, 156),
+              color: const Color.fromARGB(255, 156, 156, 156),
             ),
             Container(
               child: Container(height: 400, color: Colors.blue),
@@ -29,26 +29,26 @@ void main() {
             ),
             Container(
               height: 100,
-              color: Color.fromARGB(255, 179, 179, 179),
+              color: const Color.fromARGB(255, 179, 179, 179),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    color: Color.fromARGB(255, 248, 244, 57),
+                    color: const Color.fromARGB(255, 248, 244, 57),
                     width: 100,
                   ),
                   Container(
-                    color: Color.fromARGB(255, 248, 244, 57),
+                    color: const Color.fromARGB(255, 248, 244, 57),
                     width: 100,
                   ),
                   Container(
-                    color: Color.fromARGB(255, 248, 244, 57),
+                    color: const Color.fromARGB(255, 248, 244, 57),
                     width: 100,
                   ),
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Expanded(

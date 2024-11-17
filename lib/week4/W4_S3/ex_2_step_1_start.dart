@@ -45,7 +45,7 @@ class _CardContainerState extends State<CardContainer> {
       decoration: const BoxDecoration(
         border: Border(bottom: BorderSide(width: 1, color: Colors.grey)),
       ),
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       // YOUR CODE
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
