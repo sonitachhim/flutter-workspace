@@ -26,7 +26,7 @@ void main() {
                 ...colors.map((color) => Label(color)).toList(),
               ],
             ),
-            Label("Method 23: Dedicated Function", bold: true),
+            Label("Method 3: Dedicated Function", bold: true),
             Column(
               children: getLabels(),
             )

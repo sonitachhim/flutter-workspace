@@ -32,7 +32,7 @@ class ProfileApp extends StatelessWidget {
             CircleAvatar(
               radius: 60,
               backgroundImage: AssetImage(
-                  'assets/w5-s2/aang.png'), 
+                  'assets/W6/reee.jpeg'), 
             ),
             SizedBox(height: 20),
             Text(
