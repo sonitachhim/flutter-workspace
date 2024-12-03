@@ -1,54 +1,63 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
-List<String> colors = ["red", "blue", "green"];
+void main() => runApp(MyApp());
 
-List<Widget> getLabels() {
-  return colors.map((colors) => Label(colors)).toList();
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: 'Flutter Demo',
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
 }
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: ListView(
-          children: [
-            const Label("Method 1: Loop in Array", bold: true),
-            Column(
-              children: [
-                for (var color in colors) Label(color),
-              ],
-            ),
-            const Label("Method 2: Map", bold: true),
-            Column(
-              children: [
-                ...colors.map((color) => Label(color)),
-              ],
-            ),
-            const Label("Method 23: Dedicated Function", bold: true),
-            Column(
-              children: getLabels(),
-            )
-          ],
-        ),
-      ),
-    ),
-  ));
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class Label extends StatelessWidget {
-  const Label(this.text, {super.key, this.bold = false});
+class _MyHomePageState extends State<MyHomePage> {
+  DateTime selectedDate = DateTime.now();
 
-  final bool bold;
-  final String text;
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style:
-          TextStyle(fontWeight: (bold ? FontWeight.bold : FontWeight.normal)),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text("${selectedDate.toLocal()}".split(' ')[0]),
+            const SizedBox(height: 20.0,),
+            ElevatedButton(
+              onPressed: () => _selectDate(context),
+              child: const Text('Select date'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

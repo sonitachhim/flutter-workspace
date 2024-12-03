@@ -1,3 +1,4 @@
+// import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../models/expense.dart';
@@ -15,8 +16,10 @@ class _ExpenseFormState extends State<ExpenseForm> {
   final _titleController = TextEditingController();
   final _valueController = TextEditingController();
 
-// Add a state variable for the selected category
+//add a state for the selected category
   Category _selectedCategory = Category.food; // Default to FOOD
+
+//add state for date
 
   String get title => _titleController.text;
 
@@ -94,39 +97,66 @@ class _ExpenseFormState extends State<ExpenseForm> {
               label: Text('Title'),
             ),
           ),
-          TextField(
-            keyboardType: TextInputType.number,
-            inputFormatters: <TextInputFormatter>[
-              FilteringTextInputFormatter.digitsOnly,
+          Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: TextField(
+                  keyboardType: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
+                  controller: _valueController,
+                  maxLength: 50,
+                  decoration: const InputDecoration(
+                    prefix: Text('\$ '),
+                    label: Text('Amount'),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: child),
             ],
-            controller: _valueController,
-            maxLength: 50,
-            decoration: const InputDecoration(
-              prefix: Text('\$ '),
-              label: Text('Amount'),
-            ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            //mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              DropdownButton<Category>(
-                  value: _selectedCategory,
-                  items: Category.values.map((category) {
-                    return DropdownMenuItem(
-                      value: category,
-                      child: Text(category.name.toUpperCase()),
-                    );
-                  }).toList(),
-                  onChanged: (Category? newCategory) {
-                    setState(() {
-                      _selectedCategory = newCategory!;
-                    });
-                  }),
-              ElevatedButton(onPressed: onCancel, child: const Text('Cancel')),
-              const SizedBox(
+              Expanded(
+                flex: 1,
+                child: DropdownButton<Category>(
+                    value: _selectedCategory,
+                    items: Category.values.map((category) {
+                      return DropdownMenuItem(
+                        value: category,
+                        child: Text(category.name.toUpperCase()),
+                      );
+                    }).toList(),
+                    onChanged: (Category? newCategory) {
+                      setState(() {
+                        _selectedCategory = newCategory!;
+                      });
+                    }),
+              ),
+              Expanded(
+                flex: 1,
+                child: const SizedBox(
+                  width: 20,
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: ElevatedButton(
+                    onPressed: onCancel, child: const Text('Cancel')),
+              ),
+              SizedBox(
                 width: 20,
               ),
-              ElevatedButton(onPressed: onAdd, child: const Text('Create')),
+              Expanded(
+                flex: 1,
+                child: ElevatedButton(
+                    onPressed: onAdd, child: const Text('Create')),
+              ),
             ],
           )
         ],
