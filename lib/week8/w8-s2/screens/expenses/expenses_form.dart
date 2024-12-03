@@ -1,4 +1,5 @@
-// import 'dart:async';
+import 'dart:async';
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../models/expense.dart';
@@ -18,7 +19,23 @@ class _ExpenseFormState extends State<ExpenseForm> {
 
 //add a state for the selected category
   Category _selectedCategory = Category.food; // Default to FOOD
+  DateTime selectedDate = DateTime.now();
+  bool hasSelectDate = false;
 
+  Future<void> _selectedDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(2020),
+      lastDate: DateTime(2100),
+    );
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+        hasSelectDate = true;
+      });
+    }
+  }
 //add state for date
 
   String get title => _titleController.text;
@@ -50,7 +67,7 @@ class _ExpenseFormState extends State<ExpenseForm> {
       Expense expense = Expense(
           title: title,
           amount: amount,
-          date: DateTime.now(),
+          date: selectedDate,
           category: _selectedCategory);
 
       // 3.2- Ask the parent to add the expense
@@ -114,9 +131,23 @@ class _ExpenseFormState extends State<ExpenseForm> {
                   ),
                 ),
               ),
+              SizedBox(width: 15,),
               Expanded(
                 flex: 1,
-                child: child),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      hasSelectDate
+                          ? 'Selected Date: ${DateFormat('yyyy-MM-dd').format(selectedDate)}'
+                          : 'No Date Selected',
+                    ),
+                    IconButton(
+                        onPressed: () => _selectedDate(context),
+                        icon: const Icon(Icons.calendar_month)),
+                  ],
+                ),
+              ),
             ],
           ),
           Row(
