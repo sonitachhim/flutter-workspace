@@ -14,19 +14,19 @@ void main() {
         padding: const EdgeInsets.all(10),
         child: ListView(
           children: [
-            Label("Method 1: Loop in Array", bold: true),
+            const Label("Method 1: Loop in Array", bold: true),
             Column(
               children: [
                 for (var color in colors) Label(color),
               ],
             ),
-            Label("Method 2: Map", bold: true),
+            const Label("Method 2: Map", bold: true),
             Column(
               children: [
-                ...colors.map((color) => Label(color)).toList(),
+                ...colors.map((color) => Label(color)),
               ],
             ),
-            Label("Method 23: Dedicated Function", bold: true),
+            const Label("Method 23: Dedicated Function", bold: true),
             Column(
               children: getLabels(),
             )
