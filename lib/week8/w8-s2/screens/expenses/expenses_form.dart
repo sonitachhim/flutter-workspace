@@ -19,6 +19,7 @@ class _ExpenseFormState extends State<ExpenseForm> {
 
 //add a state for the selected category
   Category _selectedCategory = Category.food; // Default to FOOD
+  // add state for selectdate
   DateTime selectedDate = DateTime.now();
   bool hasSelectDate = false;
 
@@ -36,8 +37,8 @@ class _ExpenseFormState extends State<ExpenseForm> {
       });
     }
   }
-//add state for date
 
+//add state for date
   String get title => _titleController.text;
 
   @override
@@ -131,7 +132,7 @@ class _ExpenseFormState extends State<ExpenseForm> {
                   ),
                 ),
               ),
-              SizedBox(width: 15,),
+              const SizedBox(width: 15,),
               Expanded(
                 flex: 1,
                 child: Row(
@@ -169,9 +170,9 @@ class _ExpenseFormState extends State<ExpenseForm> {
                       });
                     }),
               ),
-              Expanded(
+              const Expanded(
                 flex: 1,
-                child: const SizedBox(
+                child: SizedBox(
                   width: 20,
                 ),
               ),
@@ -180,7 +181,7 @@ class _ExpenseFormState extends State<ExpenseForm> {
                 child: ElevatedButton(
                     onPressed: onCancel, child: const Text('Cancel')),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               Expanded(
