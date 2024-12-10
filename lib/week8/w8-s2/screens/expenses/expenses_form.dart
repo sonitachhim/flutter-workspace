@@ -21,8 +21,9 @@ class _ExpenseFormState extends State<ExpenseForm> {
   Category _selectedCategory = Category.food; // Default to FOOD
   // add state for selectdate
   DateTime selectedDate = DateTime.now();
+  //the datetime can't be null so add this so that when haven't selected it display no date selected
   bool hasSelectDate = false;
-
+//don't know when it'll end but promise that the result is DateTime
   Future<void> _selectedDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -132,7 +133,9 @@ class _ExpenseFormState extends State<ExpenseForm> {
                   ),
                 ),
               ),
-              const SizedBox(width: 15,),
+              const SizedBox(
+                width: 15,
+              ),
               Expanded(
                 flex: 1,
                 child: Row(
